@@ -2,7 +2,7 @@
 Vendelligence personal information retrieval, filtering, and note-taking web application.
 
 ## Description
-Vendelligence was an information retrieval and filtering tool for software vendor products and open source projects. It integrated with the Google Custom Search API, now the Programmable Search API.
+Vendelligence was an information retrieval and filtering tool for software vendor products and open source projects.
 
 It was developed to support my own technical information needs when working on IT projects in consulting and researching topics on the fly as a developer. I tended to return back to the same trusted sources frequently and used common patterns for querying and note-taking.
 
@@ -11,20 +11,16 @@ It provided curated vendor and open source project resources, information retrie
 ## Why I developed it
 I wanted to create an adaptive information support system to help me in my systems integration consulting and later software developer roles. In my work with clients in the past and in my own development activity and self-learning, I encountered a mixture of vendor products and open source solutions, and often needed to ramp up on new technologies quickly or mentor team colleagues fast. I used text files and bookmarks, but they were isolated information resources and software product or open source solution data could become dated or deprecated depending on the vendor release strategy.
 
-I also didn't want to have to rely on ad-hoc questions to colleagues; I wanted the information in a system that could be quickly indexed and added to as needed, and that everyone could use and share manually or with other machine clients.
+I also didn't want to have to rely on ad-hoc questions to colleagues as this takes up a lot of time with mails and chat channels; I wanted the information in a system that could be quickly indexed and added to as needed, and that everyone could use and share manually or with other machine clients.
 
 The refinement filters were based on my own common query patterns when researching topics in vendor products or open source projects and common indexing methods used by vendors for their publicly accessible software documentation and help libraries.
 
 ## PROJECT STATUS LOG
 The Vendelligence web application was completed and finished back in December 2016.
 
-The project was reviewed and revisited in my MSc in Computer Science - Data Analytics in 2019 as I found I really needed this type of information retrieval and knowledge recommender tool more than ever and had been using the first version for personal projects and in college, but gaps were apparent to me; lack of a native IR module - it depended on the Google CSE paid-for API license and lack of automated best answer prediction support from querying third-party data.
+The project was reviewed and revisited in my MSc in Computer Science - Data Analytics in 2019 as I found I needed this type of information retrieval and knowledge recommender tool in college and not just in work roles, so the thesis project targeted addressing a phase-out of the Google CSE API and prototyping an information retrieval engine using open source solutions - Gensim was chosen in the end. Two ML solution prototypes were then evaluated for the question answering-recommender system module for best answer prediction, an artificial neural network model and an XGBoost model. These were based on literature review of question answering system ML performance over Stack Overflow datasets. Newer large language models have been released over the past three years, so I am assessing their capability in more recent prototypes, for example, HuggingFace.
 
-My thesis project targeted the following items in relation to a list of Research Questions:
-- removal of the dependency from cost perspective on the Google CSE API license which requires paying a third-party provider and build a standalone information retrieval module using an open source solution or completely custom solution. Gensim was ultimately chosen for the prototype
-- applying machine learning to the recommender system task - i.e. best answer prediction - using methods from NLP and literature review of state-of-the-art at the time. Newer large language models have been released over the past three years, so I am assessing their capability in new standalone ML prototypes
-
-The thesis project was written in Python and used scikit-learn, Keras with TensorFlow, and MySQL for staging the dataset. It will be uploaded separately and linked here for reference.
+The thesis project was written in Python and used scikit-learn, Keras with TensorFlow, and MySQL for staging the dataset. It will be uploaded separately and linked here for historical reference.
 
 ## ARCHITECTURE
 The tool uses Javascript, jQuery, Bootstrap, Thymeleaf, Spring Boot, Spring Framework, and MariaDB.
