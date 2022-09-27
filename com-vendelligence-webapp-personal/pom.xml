@@ -1,0 +1,272 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.8.RELEASE</version>
+	</parent>
+	<groupId>com.vendelligence</groupId>
+	<artifactId>com-vendelligence-webapp</artifactId>
+	<version>1.0-RELEASE</version>
+	<name>Vendelligence Web Application</name>
+	<description>Vendelligence Web Application - Spring Boot build.</description>
+	<dependencies>
+
+		<!-- Spring Boot Starter libraries -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
+		<!-- Actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Thymeleaf View Template Engine Vendelligence is not using the newer 
+			2016 thymeleaf upgrade yet even we have migrated other projects to it. I 
+			would prefer to keep Vendelligence spring boot version in sync with their 
+			thymeleaf 3 integration. Track on GitHub here: https://github.com/spring-projects/spring-boot/issues/4393 
+			Refer to Phil Webb github comment on that thread dated: 18-July-2016 Thymeleaf 
+			3 is supported in 1.4 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- ThymeLeaf 3.0 Spring Release is not yet supported by Spring Boot -->
+		<!-- DO NOT INCLUDE THIS DEPENDENCY UNTIL SPRING BOOT TEAM RELEASE OFFICIAL 
+			SPRING BOOT SUPPORTED INTEGRATION. looking at 1.5 now <dependency> <groupId>org.thymeleaf</groupId> 
+			<artifactId>thymeleaf</artifactId> <version>3.0.0.RELEASE</version> <scope>compile</scope> 
+			</dependency> <dependency> <groupId>org.thymeleaf</groupId> <artifactId>thymeleaf-spring4</artifactId> 
+			<version>3.0.0.RELEASE</version> </dependency> -->
+
+		<!-- Apache HTTP Client -->
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<!-- Annotation processing -->
+		<!-- https://github.com/spring-projects/spring-boot/blob/master/spring-boot-autoconfigure/pom.xml -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- For Spring Boot when running in non-embedded Tomcat for release 1 
+			deployment to Amazon Web Services Container http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.tomcat.embed</groupId> <artifactId>tomcat-embed-websocket</artifactId> 
+			<scope>provided</scope> </dependency> -->
+
+		<!-- Servlet API libraries and Spring Security taglib references -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+
+		<!-- spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
+		<!-- Logging support libraries http://www.slf4j.org/ http://logback.qos.ch/ -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<!-- Legacy library and API support libraries for logging based on online 
+			tutorials as I was using log4j configuration for multiple files, webapp, 
+			database etc. I have moved a lot of it into the spring application*.properties 
+			now but still used this in cloned local builds for legacy build support. 
+			Keep it optional for now. http://www.slf4j.org/legacy.html -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+
+		<!-- This was flagged as missing dependency during prior startup errors 
+			so we have included it in pom.xml to keep build stable since. https://eclipse.org/aspectj/ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+
+		<!-- Java Mail support libraries http://www.oracle.com/technetwork/java/javamail/index.html -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<!-- Password Validation -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- Spring Persistence Database and JPA dependencies https://mariadb.org/ 
+			https://aws.amazon.com/rds/mariadb/ http://hibernate.org/orm/ We have tested 
+			on MySQL database in initially and moved to MariaDB for all subsequent testing. 
+			The October 21-2016 build was tested on Server version: 10.1.14-MariaDB The 
+			Hibernate import is less relevant to current usermanager and querymanager 
+			but will be important for the future package*manager imports in subsequent 
+			builds which I will be integrating after initial release as the relational 
+			modelling is more strict in those packages. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+
+		<!-- Spring HATEOAS support libraries -->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+		</dependency>
+
+		<!-- DB support libraries for Relational database https://commons.apache.org/proper/commons-dbcp/ -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+
+		<!-- Utility Libraries Google Guava https://mvnrepository.com/artifact/com.google.guava/guava 
+			The original usermanager package did make use of google guava import data 
+			types. I am not using it explicitly yet which is intentional for any of the 
+			querymanager, searchmanager, and crm packages. Enable it once you have finalized 
+			the vendor configuration in particular the hashmap data type usage. -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+		<!-- RestAssured for alternative rest scenario test case support -->
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<!-- Vendelligence Web App Build information -->
+	<build>
+		<finalName>ROOT</finalName>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/fonts/**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/fonts/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/ebextensions</directory>
+				<targetPath>.ebextensions</targetPath>
+				<includes>
+					<include>*.*</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<!-- Plugin dependencies -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<finalName>ROOT</finalName>
+							<outputDirectory>${project.basedir}/target</outputDirectory>
+							<addResources>true</addResources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+
+				<!-- <version>${maven-surefire-plugin.version}</version> -->
+				<configuration>
+					<testFailureIgnore>false</testFailureIgnore>
+					<includes>
+						<include>**/*IntegrationTest.java</include>
+					</includes>
+					<systemPropertyVariables>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<properties>
+		<java-version>1.8</java-version>
+
+		<!-- logging -->
+		<org.slf4j.version>1.7.12</org.slf4j.version>
+		<logback.version>1.1.3</logback.version>
+
+		<!-- Inject -->
+		<javax.inject.version>1</javax.inject.version>
+
+		<!-- Maven plugins -->
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+
+		<!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
+		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+
+	</properties>
+</project>

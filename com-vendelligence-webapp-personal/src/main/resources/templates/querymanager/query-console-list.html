@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='Query List View - Read, Delete, Update Stored Queries')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source projects.</h5>
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+		<h4 th:text="#{label.queryList}"></h4>
+
+		<p>List all saved queries from your query repository.</p>
+		<p>Read a Query to update it, search using different criteria, or
+			amend your notes. Delete removes the Query from the query repository.</p>
+
+		<!-- begin query list table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Query Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- fill the rows dynamically -->
+				<tr th:each="query : ${querylist}">
+					<td th:text="${query.queryName}"></td>
+					<td>
+						<form
+							th:action="@{'/querymanager/query-console-list/' + ${query.id} + '/update'}"
+							method="GET">
+							<button type="submit" class="btn btn-success">Read</button>
+						</form>
+						<form
+							th:action="@{'/querymanager/query-console-list/' + ${query.id} + '/delete'}"
+							method="POST">
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- end query list table -->
+
+		<!-- begin footer navigation -->
+		<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+		<!-- end footer navigation -->
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/minimal-script-fragments"></script>
+
+</body>
+</html>

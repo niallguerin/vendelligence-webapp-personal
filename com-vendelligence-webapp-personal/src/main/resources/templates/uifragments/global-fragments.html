@@ -1,0 +1,171 @@
+<!-- begin global cross-view-template fragments -->
+
+<!-- template :: html header for all view templates: customize the title text per view -->
+<head th:fragment="global-header (pageTitle)">
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- bootstrap core css -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></link>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link th:href="@{/css/ie10-viewport-bug-workaround.css}"
+	rel="stylesheet"></link>
+
+<!-- import vendelligence custom styles - do not directly customize the bootstrap download as
+you will break subsequent upgrades of the bootstrap libraries. keep our css decoupled -->
+<link th:href="@{/css/vendelligence.css}" rel="stylesheet"></link>
+
+<!-- custom favicon -->
+<link rel="icon" type="image/png" href="/img/v-favicon.png"></link>
+
+<!-- custom view title per html page -->
+<title th:text="${pageTitle}">Template title</title>
+</head>
+
+<!-- template :: global navigation -->
+<!-- this template is being phased out in favor of the usermanager logged-in and logged-out template -->
+<nav th:fragment="global-nav"
+	class="navbar navbar-inverse navbar-custom">
+	<div class="container-fluid">
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="/" id="homepage">Search</a></li>
+				<!-- 				<li><a th:href="@{/querymanager/query-console-list}">Static Query List</a></li> -->
+				<li><a
+					th:href="@{/querymanager/query-console-list-paginated?page=1}">Query
+						List</a></li>
+				<li><a href="#">Query Search</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- template :: footer navigation -->
+<nav th:fragment="footer-nav"
+	class="navbar navbar-inverse navbar-custom">
+	<div class="container-fluid">
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="/about" id="aboutpage">About</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- end global cross-view-template fragments -->
+
+<!-- template :: querymanager fragments -->
+
+<!-- template :: vendorlist for user interface -->
+<div th:fragment="vendorlist">
+	<label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-aws" value="aws" checked="checked" /> Amazon Web Services
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-docker" value="docker" /> Docker
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-eclipse" value="eclipse" /> Eclipse
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-google-cloud-platform" value="google-cloud-platform" /> Google
+		Cloud Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-hadoop" value="hadoop" /> Hadoop
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-ibm-cloud-platform" value="ibm-cloud-platform" /> IBM Cloud
+		Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-jquery" value="jquery" /> jQuery
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-jetbrains-intellij" value="jetbrains-intellij" /> Intellij
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-mariadb" value="mariadb" /> MariaDB
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-microsoft-cloud-platform" value="microsoft-cloud-platform" />
+		Microsoft Cloud Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-npm" value="npm" /> NPM
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-openstack" value="openstack" /> Openstack
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-oracle" value="oracle" /> Oracle
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-sap" value="sap" /> SAP
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-apache-spark" value="apache-spark" /> Apache Spark
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-pivotal-spring" value="pivotal-spring" /> Spring
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-wireshark" value="wireshark" /> Wireshark
+	</label>
+</div>
+<!-- end vendorlist for user interface -->
+
+<!-- template :: vendorlist-no-default-checked-vendor for user interface -->
+<div th:fragment="vendorlist-no-default-checked-vendor">
+	<label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-aws" value="aws" /> Amazon Web Services
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-docker" value="docker" /> Docker
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-eclipse" value="eclipse" /> Eclipse
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-google-cloud-platform" value="google-cloud-platform" /> Google
+		Cloud Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-hadoop" value="hadoop" /> Hadoop
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-ibm-cloud-platform" value="ibm-cloud-platform" /> IBM Cloud
+		Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-jquery" value="jquery" /> jQuery
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-jetbrains-intellij" value="jetbrains-intellij" /> Intellij
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-mariadb" value="mariadb" /> MariaDB
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-microsoft-cloud-platform" value="microsoft-cloud-platform" />
+		Microsoft Cloud Platform
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-npm" value="npm" /> NPM
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-openstack" value="openstack" /> Openstack
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-oracle" value="oracle" /> Oracle
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-sap" value="sap" /> SAP
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-apache-spark" value="apache-spark" /> Apache Spark
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-pivotal-spring" value="pivotal-spring" /> Spring
+	</label> <label class="btn btn-default"> <input type="radio" name="vkb"
+		id="v-wireshark" value="wireshark" /> Wireshark
+	</label>
+</div>
+<!-- end vendorlist-no-default-checked-vendor user interface -->
+
+<!-- template :: pre processing filter for filtered search.
+it also works as post-processing filter if you search and then filter the results -->
+<div th:fragment="pre-processing-filter" id="pre-processing-filter"
+	class="pre-proc-filter">
+	<h4 class="well well-sm">Refine Results</h4>
+	<button class="btn btn-primary" id="more:stack_overflow"
+		onclick="refineSearch(this.id)">Stack Overflow</button>
+	<button class="btn btn-primary" id="more:engineer_blogs"
+		onclick="refineSearch(this.id)">Engineer Blogs</button>
+	<button class="btn btn-primary" id="more:community_forums"
+		onclick="refineSearch(this.id)">Community Forums</button>
+	<button class="btn btn-primary" id="more:help_library"
+		onclick="refineSearch(this.id)">Help Library</button>
+	<button class="btn btn-primary" id="more:knowledge_providers"
+		onclick="refineSearch(this.id)">Knowledge Providers</button>
+	<button class="btn btn-primary" id="more:api"
+		onclick="refineSearch(this.id)">API</button>
+	<button class="btn btn-primary" id="more:youtube_videos"
+		onclick="refineSearch(this.id)">YouTube Videos</button>
+</div>
+<!-- end pre processing filter for filtered search -->
+
+<!-- end querymanager fragments -->

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='Query List View using Pagination - Read, Delete, Update Stored Queries')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source project.</h5>
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+
+		<h4 th:text="#{label.queryListPaged}"></h4>
+
+        <p>List all saved queries from your query repository.</p>
+        <p>Read a Query to update it, search using different criteria, or
+            amend your notes. Delete removes the Query from the query repository.</p>
+
+		<!-- begin query list table -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Query Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- fill the rows dynamically -->
+				<tr th:each="query : ${pagedquerylist}">
+					<td th:text="${query.queryName}"></td>
+					<td>
+						<form
+							th:action="@{'/querymanager/query-console-list/' + ${query.id} + '/update'}"
+							method="GET">
+							<button type="submit" class="btn btn-success">Read</button>
+						</form>
+						<form
+							th:action="@{'/querymanager/query-console-list/' + ${query.id} + '/delete'}"
+							method="POST">
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- end query list table -->
+
+		<!-- query count tracker -->
+		<h5>Total Queries</h5>
+		<p th:text="${querylistsize}"></p>
+		<!-- end query list table -->
+
+	<!-- to adjust button input options and th:onclick see this and answer from daniel as he is tl owner:
+	http://forum.thymeleaf.org/problem-in-writing-inline-javascript-code-td3527781.html -->
+	<!-- begin thymeleaf manual poc using variables to implement pagination in tandem with spring jpa default setup -->
+	<div class="container"
+		th:each="item, iterStatCount : ${pagedquerylist.getTotalPages()}">
+		<ul class="pagination pagination-lg">
+
+			<!-- only display previous page if returns true. -->
+			<li th:if="${prevpage}==true"><a
+				th:href="@{/querymanager/query-console-list-paginated(page=${cpage-1})}"
+				th:text="Prev"></a></li>
+
+			<!-- list item count based on the page range -->
+			<li th:each="element, iterStat : ${pagerange}"><a
+				th:href="@{/querymanager/query-console-list-paginated(page=${iterStat.count})}"
+				th:text="${iterStat.count}"></a></li>
+
+			<!-- only display next page if returns true. -->
+			<li th:if="${nextpage}==true"><a
+				th:href="@{/querymanager/query-console-list-paginated(page=${cpage+1})}"
+				th:text="Next"></a></li>
+		</ul>
+	</div>
+	<!-- end main body -->
+
+	<!-- begin footer -->
+	<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+	<!-- end footer -->
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/minimal-script-fragments"></script>
+
+</body>
+</html>

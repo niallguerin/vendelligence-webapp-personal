@@ -1,0 +1,54 @@
+@font-face 
+{
+	font-family: vendelligence-header;
+	src: url("../fonts/Xolonium-Regular.otf") format("opentype");
+}
+
+.banner 
+{
+	font-family: vendelligence-header;
+}
+
+h6 
+{
+	color: green;
+}
+
+body 
+{ 
+	background: #fdfdfd !important;
+}
+
+.btn-custom 
+{
+	color: #fff;
+	background-color: #2292a7;
+	border-color: #2292a7;
+}
+
+.navbar-custom 
+{
+    background-color:#2292a7;
+    color:#2292a7;
+    border-color:#2292a7;
+}
+
+.navbar-custom .navbar-nav > li > a 
+{
+    color:#fdfdfd;
+}
+
+.feedbackValidityContainer 
+{
+	display: none;
+}
+
+.feedbackValidLabel 
+{
+	display: none;
+}
+
+.feedbackValidityMessage 
+{
+	display: none;
+}

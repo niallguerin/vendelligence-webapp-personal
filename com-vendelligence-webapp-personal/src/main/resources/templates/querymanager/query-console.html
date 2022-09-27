@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='Query Console - Search by Vendor and Store Query View')">
+<title>View title</title>
+</head>
+
+<body>
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source projects.</h5>
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+		<!-- begin search ui container -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form">
+					<form role="form" action="#">
+						<!-- begin vendor filter header -->
+						<h4 class="well well-sm">Filter by Vendor or Open Source
+							Project</h4>
+
+						<!-- begin vendor filter -->
+						<div th:replace="uifragments/global-fragments :: vendorlist"></div>
+						<!-- end vendor filter -->
+
+						<br /> <br />
+					</form>
+
+					<div class="row">
+						<div class="col-md-10">
+							<div class="input-group">
+								<input type="text" class="form-control"
+									placeholder="Search Vendelligence" name="query" id="query" />
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default" id="searchButton">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+									<!-- begin search reset button -->
+									<button type="button" class="btn btn-default"
+										id="searchResetButton">Reset</button>
+									<!-- end search reset button -->
+								</div>
+
+							</div>
+							<div class="input-group">
+								<!-- begin sort-by-date button -->
+								<button type="button" class="btn btn-default"
+									id="sortByDateButton">Sort by Date</button>
+								<!-- end sort-by-date button -->
+
+								<!-- begin sort-by-date button -->
+								<button type="button" class="btn btn-default"
+									id="sortByRelevanceButton">Sort by Relevance</button>
+								<!-- end sort-by-date button -->
+
+							</div>
+						</div>
+					</div>
+
+					<br />
+
+					<!-- message container -->
+					<div id="queryMsg" class="well well-sm"></div>
+
+					<!-- begin refine results pre processing filter -->
+					<div
+						th:replace="uifragments/global-fragments :: pre-processing-filter"></div>
+					<!-- end refine results pre processing filter -->
+
+					<!-- begin response panel -->
+					<div id="response-panel">
+						<div id="filter-toggle"></div>
+						<div id="results-refinements"></div>
+						<div id="results-content"></div>
+					</div>
+					<!-- end response panel -->
+
+					<!-- begin pagination panel -->
+					<div id="pagination-panel"></div>
+					<!-- end pagination panel -->
+				</div>
+				<!-- end search ui container -->
+
+			</div>
+
+			<div class="col-md-4">
+				<!-- begin ui panel for query object crud operations -->
+				<div class="form">
+					<h4 class="text-muted">Save Query Notes</h4>
+					<form role="form" action="#"
+						th:action="@{/querymanager/query-console-submit}"
+						th:object="${query}" method="POST">
+
+						<input type="hidden" name="queryVendorFilter"
+							id="queryVendorFilter" th:field="*{queryVendorFilter}"
+							class="form-control" readonly="true" /> <input type="hidden"
+							name="queryString" id="queryString" th:field="*{queryString}"
+							class="form-control" readonly="true" /> <label for="text">Add
+							Query Name</label> <input type="text" class="form-control"
+							name="queryName" id="queryName" th:field="*{queryName}" />
+
+						<!-- begin query object metadata -->
+						<!-- <label for="text">Add Tags</label> <input type="text"
+							class="form-control" th:field="*{queryTags}" /> 
+						-->
+						<label for="comment">Add Notes</label>
+						<textarea class="form-control" rows="20" th:field="*{queryNotes}" id="querynotesarea"></textarea>
+
+						<!-- end query object metadata -->
+						<button type="submit" class="btn btn-primary">Save Query</button>
+					</form>
+					<!-- begin ui panel for query object crud operations -->
+				</div>
+			</div>
+		</div>
+
+		<br />
+		<!-- begin footer -->
+		<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+		<!-- end footer -->
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/global-script-fragments"></script>
+</body>
+</html>

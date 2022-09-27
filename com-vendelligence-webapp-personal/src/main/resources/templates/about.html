@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="/uifragments/global-fragments :: global-header (pageTitle='About View')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source projects.</h5>
+
+		<div class="row">
+			<div class="col-md-8">
+
+				<!-- begin primary navigation. -->
+				<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+				<!-- end primary navigation. -->
+
+				<h2 class="banner well well-sm">About Vendelligence</h2>
+
+				<!-- begin static paragraph content -->
+
+				<p>Vendelligence is a curated research support and filtering
+					tool that focuses on indexed public resources from commercial
+					software vendors and open source projects.</p>
+
+				<p>It relies on simple PRE and POST processing search Filters to
+					assist with query research. The filters cover vendor product
+					documentation (help libraries), API documentation (code libraries),
+					vendor community forums, engineering blogs from trusted public
+					architects/engineers that are regarded as domain experts, knowledge
+					providers like 3rd party media technical expert sites, and Q&amp;A
+					sites relevant to the technology (like stack overflow).</p>
+
+				<p>Vendelligence integrates with the Google Custom Search JSON
+					API as I wanted a way to control the filters and search quality
+					while being able to integrate it with an application that runs
+					locally or on a remote hosted service.</p>
+
+				<p>
+					This version runs in simple search-only mode. The GitHub <a
+						href="https://github.com/niallguerin/vendelligence"
+						target="_blank">project</a> shows an extended version of the tool
+					using search-and-store mode, so you can save, retrieve, update, and
+					delete your queries and annotate them.
+				</p>
+
+				<p>The private personal edition build uses a larger number of
+					vendors and open source projects and connects to additional APIs to
+					support my own workflows.</p>
+
+				<p>
+					For additional information about the project, refer to the
+					informazine.com projects platform <a
+						href="http://informazine.com/project-vendelligence.html"
+						target="_blank"> Vendelligence page</a>.
+				</p>
+
+				<!-- end static paragraph content -->
+
+				<!-- begin footer -->
+				<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+				<!-- end footer -->
+
+				<div class="well well-sm">
+					<a href="https://github.com/niallguerin/vendelligence"
+						target="_blank"><img src="../img/GitHub-Mark-32px.png" /></a>
+					<!-- informazine twitter contact method -->
+					<a href="https://twitter.com/informazine" target="_blank"><img
+						src="../img/twitter-logo.png" width="32" height="32" /></a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/minimal-script-fragments"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<!-- delete view not directly accessible anymore in usermanager nav. plan to drop
+as I can delete from querylist and from update views -->
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='Query Console - Query Read and Delete View')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source projects.</h5>
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+		<h1 th:text="#{label.queryconsole}"></h1>
+
+		<!-- begin save query form -->
+		<form action="#"
+			th:action="@{'/querymanager/query-console/' + ${query.id} + '/delete'}"
+			th:object="${query}" method="post">
+			<label for="text">Query</label> <input type="text"
+				class="form-control" th:field="*{queryString}" />
+
+			<!--  <label for="text">Tags</label>
+			<input type="hidden" class="form-control" th:field="*{queryTags}" />-->
+			<label for="comment">Notes</label>
+			<textarea class="form-control" rows="5" th:field="*{queryNotes}"></textarea>
+
+			<button type="submit" class="btn btn-danger">Delete Query</button>
+		</form>
+		<br />
+		<!-- end save query form -->
+
+		<!-- begin footer navigation -->
+		<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+		<!-- end footer navigation -->
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/global-script-fragments"></script>
+
+</body>
+</html>

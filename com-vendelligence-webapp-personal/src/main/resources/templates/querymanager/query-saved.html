@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='Query Saved Confirmation View')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="banner">Vendelligence</h2>
+		<h5>Research support and filtering for enterprise software vendor
+			products and open source projects.</h5>
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+		<h4 class="alert alert-success" th:text="#{message.querySaveSuccess}"></h4>
+		<a class="btn btn-default" th:href="@{/querymanager/query-console}">Search
+			Vendelligence</a> <a class="btn btn-default"
+			th:href="@{/querymanager/query-console-list}">Go to Query List</a> <br />
+		<br />
+
+		<!-- begin footer -->
+		<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+		<!-- end footer -->
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/minimal-script-fragments"></script>
+
+</body>
+</html>

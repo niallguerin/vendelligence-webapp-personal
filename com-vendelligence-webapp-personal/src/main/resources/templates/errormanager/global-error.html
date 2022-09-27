@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head
+	th:replace="uifragments/global-fragments :: global-header (pageTitle='General System Error View')">
+<title>View title</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<!-- begin primary navigation. -->
+		<nav th:replace="uifragments/global-fragments :: global-nav"></nav>
+		<!-- end primary navigation. -->
+
+		<div class="jumbotron">
+			<h4>We are experiencing a problem with handling your request!</h4>
+			<p>This is a generic error page if the system is experiencing
+				issues.</p>
+		</div>
+
+		<!-- begin bottom navigation. -->
+		<nav th:replace="uifragments/global-fragments :: footer-nav"></nav>
+		<!-- end footer navigation. -->
+
+	</div>
+
+	<!-- javascript library references -->
+	<script th:replace="uifragments/minimal-script-fragments"></script>
+
+</body>
+</html>
