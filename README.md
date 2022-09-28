@@ -4,28 +4,25 @@ Vendelligence personal information retrieval, filtering, and note-taking web app
 ## Description
 Vendelligence was an information retrieval and filtering tool for software vendor products and open source projects.
 
-It was developed to support my own technical information needs when working on IT projects in consulting and researching topics on the fly as a developer. I tended to return back to the same trusted sources frequently and used common patterns for querying and note-taking.
+It was developed to support my own technical information needs when working on IT projects in consulting and researching topics on the fly as a developer. I tended to return back to the same trusted sources frequently and used common patterns for querying and note-taking. I got asked a lot of questions by clients and colleagues over mail or chat and wanted a system to automate that task and my own research tasks, so I could always see the latest information around best practices, deprecated functions, errors and solutions, new features, and security vulnerabilities etc. The information had to come from trusted official sources and reliable domain experts whether they were bloggers, authors, or vendor experts in a given vendor forum for question answering.
 
 It provided curated vendor and open source project resources, information retrieval using the Google CSE API, an internal web clipper UI for snipping the results in the view templates, and basic list and CRUD operations for stored queries and query metadata like your notes.
 
-## Why I developed it
-I wanted to create an adaptive information support system to help me in my systems integration consulting and later software developer roles. In my work with clients in the past and in my own development activity and self-learning, I encountered a mixture of vendor products and open source solutions, and often needed to ramp up on new technologies quickly or mentor team colleagues fast. I used text files and bookmarks, but they were isolated information resources and software product or open source solution data could become dated or deprecated depending on the vendor release strategy.
-
-I also didn't want to have to rely on ad-hoc questions to colleagues as this takes up a lot of time with mails and chat channels; I wanted the information in a system that could be quickly indexed and added to as needed, and that everyone could use and share manually or with other machine clients.
-
-The refinement filters were based on my own common query patterns when researching topics in vendor products or open source projects and common indexing methods used by vendors for their publicly accessible software documentation and help libraries.
+The search result refinement filters were based on my own common query patterns when researching topics in vendor products or open source projects and common indexing methods used by vendors for their publicly accessible software documentation and help libraries.
 
 ## PROJECT STATUS LOG
-The Vendelligence web application was completed and finished back in December 2016.
+The Vendelligence web application was completed and finished back in December 2016 and has been used intermittently for personal use since that time. Project development is fully closed since March 2020 when minor fixes were implemented for jQuery front-end bug and the web clipper UI tool.
 
-The project was reviewed and revisited in my MSc in Computer Science - Data Analytics in 2019 as I found I needed this type of information retrieval and knowledge recommender tool in college and not just in work roles, so the thesis project targeted addressing a phase-out of the Google CSE API and prototyping an information retrieval engine using open source solutions - Gensim was chosen in the end. Two ML solution prototypes were then evaluated for the question answering-recommender system module for best answer prediction, an artificial neural network model and an XGBoost model. These were based on literature review of question answering system ML performance over Stack Overflow datasets. Newer large language models have been released over the past three years, so I am assessing their capability in more recent prototypes, for example, HuggingFace.
-
-The thesis project was written in Python and used scikit-learn, Keras with TensorFlow, and MySQL for staging the dataset. It will be uploaded separately and linked here for historical reference.
+The vendelligence project was reviewed and revisited in my MSc in Computer Science - Data Analytics thesis project in 2019. The thesis project is on GitHub as a separate repository. It involved a complete rewrite of the system in Python based on gap analysis of original tool and research questions based on literature review of information retrieval systems, question answering systems, recommender systems, and machine learning algorithm performance over technical forum Q&A datasets.
 
 ## ARCHITECTURE
 The tool uses Javascript, jQuery, Bootstrap, Thymeleaf, Spring Boot, Spring Framework, and MariaDB.
 
-This version was tested with Spring Boot 1.3.8, Java 1.8, and MariaDB 10.1.14 and with Apache Tomcat. It was deployed locally and on Amazon Web Services Elastic Beanstalk instances in the past.
+This version was tested with Spring Boot 1.3.8, Java 1.8, and MariaDB 10.1.14 and with Apache Tomcat. 
+
+It can be run locally on your laptop with a local MariaDB or MySQL database instance.
+
+This version was also deployed on Amazon Web Services Elastic Beanstalk back in 2016 for user requirements analysis and feedback.
 
 ### MAVEN BUILD
 ```
