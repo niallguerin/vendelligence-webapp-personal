@@ -4,13 +4,15 @@ Vendelligence personal information retrieval, filtering, and note-taking web app
 ## Description
 Vendelligence was an information retrieval and filtering tool for software vendor products and open source projects.
 
-It was developed to support my own information needs when working on IT projects in consulting and researching topics on the fly as a developer. This version does not contain a user management engine, but a private historic repository does contain a UME for user registration and multi-user support, but that project has been archived.
+It was developed to support my own information needs when working on IT projects in consulting and researching topics on the fly as a developer. 
 
 I wanted an information system to better support my daily research, information storage, and retrieval tasks and a system that could support other IT consultants, technical leads and software developers. That way, a user could always see the latest information around best practices, errors and solutions, new features, deprecated functionality, and security vulnerabilities and other types of important technical information for a project. The information had to come from trusted official sources and reliable domain experts whether they were bloggers, authors, or vendor experts in a given vendor support forum for question answering.
 
 It provided curated vendor and open source project resources, information retrieval using the Google CSE API, an internal web clipper UI for snipping the results in the view templates, and basic list and CRUD operations for stored queries and query metadata like your notes.
 
 The search result refinement filters were based on my own common query patterns when researching topics in vendor products or open source projects and common indexing methods used by vendors for their publicly accessible software documentation - API version links, Product function documentation, Forums.
+
+Note this version does not contain a user management engine, but a private historic archived repository does contain a Spring Security UME for multi-user support and user registration tasks. The personal-use version has no need for a UME, so that layer was removed for running on my own laptop and phone.
 
 ## PROJECT STATUS LOG
 The Vendelligence web application was completed and finished back in December 2016 and has been used intermittently for personal use since that time. Project development is fully closed since 2018 when minor fixes were implemented for a jQuery front-end search bug and the web clipper UI tool.
